@@ -1,0 +1,21 @@
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\Stardew Valley.exe
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\StardewModdingAPI.exe
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\xTile.dll
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\Lidgren.Network.dll
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\Steamworks.NET.dll
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\TameSlimes.dll
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\bin\Debug\TameSlimes.pdb
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\obj\Debug\TameSlimes.dll
+E:\Game Development\Mods\StardewValley_TameSlimes\Main\obj\Debug\TameSlimes.pdb
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Stardew Valley.exe
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.exe
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\xTile.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Lidgren.Network.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Steamworks.NET.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.pdb
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\FasterRun.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\FasterRun.pdb
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\FasterRun.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\FasterRun.pdb
