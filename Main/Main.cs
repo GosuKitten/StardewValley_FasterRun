@@ -1,45 +1,44 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StardewModdingAPI;
 using StardewValley;
-using StardewValley.Monsters;
 
 namespace Main
 {
     public class Main : Mod
     {
-        private int addedSpeed;
+        ModConfig config;
+        int addedSpeed;
 
-        public override void Entry(params object[] objects)
+        public override void Entry(IModHelper helper)
         {
+            config = helper.ReadConfig<ModConfig>();
             StardewModdingAPI.Events.PlayerEvents.LoadedGame += Event_LoadedGame;
         }
 
         private void Event_LoadedGame(object sender, EventArgs e)
         {
-            var ini = new IniFile(AppDomain.CurrentDomain.BaseDirectory + "Mods\\FasterRun\\FasterRun.ini");
+            int totalSpeed = config.runSpeed;
 
-            int totalSpeed;
-            int.TryParse(ini.IniReadValue("Config", "runSpeed"), out totalSpeed);
-
-            if (totalSpeed > 0)
+            if (totalSpeed > 1)
             {
                 addedSpeed = totalSpeed - 5;
-                StardewModdingAPI.Log.Info("FasterRun run speed is set to " + totalSpeed);
+                Monitor.Log("FasterRun run speed is set to " + totalSpeed, LogLevel.Debug);
                 StardewModdingAPI.Events.GameEvents.UpdateTick += GameEvents_UpdateTick;
             }
             else
             {
-                StardewModdingAPI.Log.Error("Speed value of " + ini.IniReadValue("Config", "runSpeed") + ", provided in \"" + ini.path + "\", is an invalid speed value. Only intergers (whole numbers) that are higher than 0 are allowed.");
+                Monitor.Log("Speed value of " + config.runSpeed + " provided in config.JSON" + "is an invalid speed value. Only intergers (whole numbers) that are higher than 0 are allowed.", LogLevel.Error);
             }
         }
 
         private void GameEvents_UpdateTick(object sender, EventArgs e)
         {
-            StardewValley.Game1.player.addedSpeed = addedSpeed;
+            Game1.player.addedSpeed = addedSpeed;
         }
+    }
+
+    class ModConfig
+    {
+        public int runSpeed = 7;
     }
 }

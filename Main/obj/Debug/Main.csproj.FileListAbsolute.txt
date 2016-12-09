@@ -19,3 +19,8 @@ S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Fa
 S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\FasterRun.pdb
 S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\FasterRun.dll
 S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\FasterRun.pdb
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Newtonsoft.Json.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.AssemblyRewriters.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Mono.Cecil.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Mono.Cecil.Rocks.dll
+S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.xml

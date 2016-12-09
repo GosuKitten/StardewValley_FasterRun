@@ -1,0 +1,2030 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StardewModdingAPI</name>
+    </assembly>
+    <members>
+        <member name="T:StardewModdingAPI.Advanced.ConfigFile">
+            <summary>Wraps a configuration file with IO methods for convenience.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Advanced.ConfigFile.ModHelper">
+            <summary>Provides methods for interacting with the mod directory, including read/writing the config file.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Advanced.ConfigFile.FilePath">
+            <summary>The file path from which the model was loaded, relative to the mod directory.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Advanced.ConfigFile.Reload">
+            <summary>Reparse the underlying file and update this model.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Advanced.ConfigFile.Save">
+            <summary>Save this model to the underlying file.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Advanced.IConfigFile">
+            <summary>Wraps a configuration file with IO methods for convenience.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Advanced.IConfigFile.ModHelper">
+            <summary>Provides methods for interacting with the mod directory, including read/writing the config file.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Advanced.IConfigFile.FilePath">
+            <summary>The file path from which the model was loaded, relative to the mod directory.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Advanced.IConfigFile.Reload">
+            <summary>Reparse the underlying file and update this model.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Advanced.IConfigFile.Save">
+            <summary>Save this model to the underlying file.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Command">
+            <summary>A command that can be submitted through the SMAPI console to interact with SMAPI.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Command.RegisteredCommands">
+            <summary>The commands registered with SMAPI.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Command.CommandFired">
+            <summary>The event raised when this command is submitted through the console.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Command.CommandName">
+            <summary>The name of the command.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Command.CommandDesc">
+            <summary>A human-readable description of what the command does.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Command.CommandArgs">
+            <summary>A human-readable list of accepted arguments.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Command.CalledArgs">
+            <summary>The actual submitted argument values.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Command.#ctor(System.String,System.String,System.String[])">
+            <summary>Construct an instance.</summary>
+            <param name="name">The name of the command.</param>
+            <param name="description">A human-readable description of what the command does.</param>
+            <param name="args">A human-readable list of accepted arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Command.Fire">
+            <summary>Trigger this command.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Command.CallCommand(System.String)">
+            <summary>Parse a command string and invoke it if valid.</summary>
+            <param name="input">The command to run, including the command name and any arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Command.CallCommand(System.String,StardewModdingAPI.IMonitor)">
+            <summary>Parse a command string and invoke it if valid.</summary>
+            <param name="input">The command to run, including the command name and any arguments.</param>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Command.RegisterCommand(System.String,System.String,System.String[])">
+            <summary>Register a command with SMAPI.</summary>
+            <param name="name">The name of the command.</param>
+            <param name="description">A human-readable description of what the command does.</param>
+            <param name="args">A human-readable list of accepted arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Command.FindCommand(System.String)">
+            <summary>Find a command with the given name.</summary>
+            <param name="name">The command name to find.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Config">
+            <summary>A dynamic configuration class for a mod.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Config.ConfigLocation">
+            <summary>The full path to the configuration file.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Config.ConfigDir">
+            <summary>The directory path containing the configuration file.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Config.Instance``1">
+            <summary>Construct an instance of the config class.</summary>
+            <typeparam name="T">The config class type.</typeparam>
+        </member>
+        <member name="M:StardewModdingAPI.Config.LoadConfig``1">
+            <summary>Load the config from the JSON file, saving it to disk if needed.</summary>
+            <typeparam name="T">The config class type.</typeparam>
+        </member>
+        <member name="M:StardewModdingAPI.Config.GenerateDefaultConfig``1">
+            <summary>Get the default config values.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Config.UpdateConfig``1">
+            <summary>Get the current configuration with missing values defaulted.</summary>
+            <typeparam name="T">The config class type.</typeparam>
+        </member>
+        <member name="M:StardewModdingAPI.Config.#ctor">
+            <summary>Construct an instance.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.ConfigExtensions">
+            <summary>Provides extension methods for <see cref="T:StardewModdingAPI.Config"/> classes.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.ConfigExtensions.InitializeConfig``1(``0,System.String)">
+            <summary>Initialise the configuration. That includes loading, saving, and merging the config file and in memory at a default state. This method should not be used to reload or to resave a config. NOTE: You MUST set your config EQUAL to the return of this method!</summary>
+            <typeparam name="T">The config class type.</typeparam>
+            <param name="baseConfig">The base configuration to initialise.</param>
+            <param name="configLocation">The base configuration file path.</param>
+        </member>
+        <member name="M:StardewModdingAPI.ConfigExtensions.WriteConfig``1(``0)">
+            <summary>Writes the configuration to the JSON file.</summary>
+            <typeparam name="T">The config class type.</typeparam>
+            <param name="baseConfig">The base configuration to initialise.</param>
+        </member>
+        <member name="M:StardewModdingAPI.ConfigExtensions.ReloadConfig``1(``0)">
+            <summary>Rereads the JSON file and merges its values with a default config. NOTE: You MUST set your config EQUAL to the return of this method!</summary>
+            <typeparam name="T">The config class type.</typeparam>
+            <param name="baseConfig">The base configuration to initialise.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Constants">
+            <summary>Contains SMAPI's constants and assumptions.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.RawSaveFolderName">
+            <summary>The directory name containing the current save's data (if a save is loaded).</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.RawSavePath">
+            <summary>The directory path containing the current save's data (if a save is loaded).</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Constants.Version">
+            <summary>SMAPI's current semantic version.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Constants.MinimumGameVersion">
+            <summary>The minimum supported version of Stardew Valley.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Constants.GitHubRepository">
+            <summary>The GitHub repository to check for updates.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.DataPath">
+            <summary>The directory path containing Stardew Valley's app data.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.SavesPath">
+            <summary>The directory path where all saves are stored.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.CurrentSavePathExists">
+            <summary>Whether the directory containing the current save's data exists on disk.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.SaveFolderName">
+            <summary>The directory name containing the current save's data (if a save is loaded and the directory exists).</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.CurrentSavePath">
+            <summary>The directory path containing the current save's data (if a save is loaded and the directory exists).</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.PlayerNull">
+            <summary>Whether a player save has been loaded.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.ExecutionPath">
+            <summary>The path to the current assembly being executing.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.ConsoleTitle">
+            <summary>The title of the SMAPI console window.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.LogDir">
+            <summary>The directory path in which error logs should be stored.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Constants.LogPath">
+            <summary>The file path to the error log where the latest output should be saved.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Constants.GetAssemblyMap(StardewModdingAPI.AssemblyRewriters.Platform)">
+            <summary>Get metadata for mapping assemblies to the current platform.</summary>
+            <param name="targetPlatform">The target game platform.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Constants.GetMethodRewriters">
+            <summary>Get method rewriters which fix incompatible method calls in mod assemblies.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Constants.GetSaveFolderName">
+            <summary>Get the name of a save directory for the current player.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Entities.SPlayer">
+            <summary>Static class for integrating with the player.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Entities.SPlayer.AllFarmers">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Entities.SPlayer.CurrentFarmer">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Entities.SPlayer.Player">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Entities.SPlayer.CurrentFarmerLocation">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Events.ControlEvents">
+            <summary>Events raised when the player uses a controller, keyboard, or mouse.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.KeyboardChanged">
+            <summary>Raised when the <see cref="T:Microsoft.Xna.Framework.Input.KeyboardState"/> changes. That happens when the player presses or releases a key.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.KeyPressed">
+            <summary>Raised when the player presses a keyboard key.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.KeyReleased">
+            <summary>Raised when the player releases a keyboard key.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.MouseChanged">
+            <summary>Raised when the <see cref="T:Microsoft.Xna.Framework.Input.MouseState"/> changes. That happens when the player moves the mouse, scrolls the mouse wheel, or presses/releases a button.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.ControllerButtonPressed">
+            <summary>The player pressed a controller button. This event isn't raised for trigger buttons.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.ControllerButtonReleased">
+            <summary>The player released a controller button. This event isn't raised for trigger buttons.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.ControllerTriggerPressed">
+            <summary>The player pressed a controller trigger button.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.ControlEvents.ControllerTriggerReleased">
+            <summary>The player released a controller trigger button.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeKeyboardChanged(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.Input.KeyboardState,Microsoft.Xna.Framework.Input.KeyboardState)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.KeyboardChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorState">The previous keyboard state.</param>
+            <param name="newState">The current keyboard state.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeMouseChanged(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.Input.MouseState,Microsoft.Xna.Framework.Input.MouseState,Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Point)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.MouseChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorState">The previous mouse state.</param>
+            <param name="newState">The current mouse state.</param>
+            <param name="priorPosition">The previous mouse position on the screen adjusted for the zoom level.</param>
+            <param name="newPosition">The current mouse position on the screen adjusted for the zoom level.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeKeyPressed(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.Input.Keys)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.KeyPressed"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="key">The keyboard button that was pressed.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeKeyReleased(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.Input.Keys)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.KeyReleased"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="key">The keyboard button that was released.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeButtonPressed(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerButtonPressed"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="playerIndex">The player who pressed the button.</param>
+            <param name="button">The controller button that was pressed.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeButtonReleased(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerButtonReleased"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="playerIndex">The player who released the button.</param>
+            <param name="button">The controller button that was released.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeTriggerPressed(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons,System.Single)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerTriggerPressed"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="playerIndex">The player who pressed the trigger button.</param>
+            <param name="button">The trigger button that was pressed.</param>
+            <param name="value">The current trigger value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.ControlEvents.InvokeTriggerReleased(StardewModdingAPI.IMonitor,Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons,System.Single)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerTriggerReleased"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="playerIndex">The player who pressed the trigger button.</param>
+            <param name="button">The trigger button that was pressed.</param>
+            <param name="value">The current trigger value.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsCommand">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Command.CommandFired"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsCommand.Command">
+            <summary>The triggered command.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsCommand.#ctor(StardewModdingAPI.Command)">
+            <summary>Construct an instance.</summary>
+            <param name="command">The triggered command.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsClickableMenuChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.MenuEvents.MenuChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsClickableMenuChanged.NewMenu">
+            <summary>The previous menu.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsClickableMenuChanged.PriorMenu">
+            <summary>The current menu.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsClickableMenuChanged.#ctor(StardewValley.Menus.IClickableMenu,StardewValley.Menus.IClickableMenu)">
+            <summary>Construct an instance.</summary>
+            <param name="priorMenu">The previous menu.</param>
+            <param name="newMenu">The current menu.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsClickableMenuClosed">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.MenuEvents.MenuClosed"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsClickableMenuClosed.PriorMenu">
+            <summary>The menu that was closed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsClickableMenuClosed.#ctor(StardewValley.Menus.IClickableMenu)">
+            <summary>Construct an instance.</summary>
+            <param name="priorMenu">The menu that was closed.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsControllerButtonPressed">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerButtonPressed"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerButtonPressed.PlayerIndex">
+            <summary>The player who pressed the button.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerButtonPressed.ButtonPressed">
+            <summary>The controller button that was pressed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsControllerButtonPressed.#ctor(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons)">
+            <summary>Construct an instance.</summary>
+            <param name="playerIndex">The player who pressed the button.</param>
+            <param name="button">The controller button that was pressed.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsControllerButtonReleased">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerButtonReleased"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerButtonReleased.PlayerIndex">
+            <summary>The player who pressed the button.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerButtonReleased.ButtonReleased">
+            <summary>The controller button that was pressed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsControllerButtonReleased.#ctor(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons)">
+            <summary>Construct an instance.</summary>
+            <param name="playerIndex">The player who pressed the button.</param>
+            <param name="button">The controller button that was released.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsControllerTriggerPressed">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerTriggerPressed"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerTriggerPressed.PlayerIndex">
+            <summary>The player who pressed the button.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerTriggerPressed.ButtonPressed">
+            <summary>The controller button that was pressed.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerTriggerPressed.Value">
+            <summary>The current trigger value.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsControllerTriggerPressed.#ctor(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons,System.Single)">
+            <summary>Construct an instance.</summary>
+            <param name="playerIndex">The player who pressed the trigger button.</param>
+            <param name="button">The trigger button that was pressed.</param>
+            <param name="value">The current trigger value.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsControllerTriggerReleased">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.ControllerTriggerReleased"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerTriggerReleased.PlayerIndex">
+            <summary>The player who pressed the button.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerTriggerReleased.ButtonReleased">
+            <summary>The controller button that was released.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsControllerTriggerReleased.Value">
+            <summary>The current trigger value.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsControllerTriggerReleased.#ctor(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons,System.Single)">
+            <summary>Construct an instance.</summary>
+            <param name="playerIndex">The player who pressed the trigger button.</param>
+            <param name="button">The trigger button that was released.</param>
+            <param name="value">The current trigger value.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsCurrentLocationChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.LocationEvents.CurrentLocationChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsCurrentLocationChanged.NewLocation">
+            <summary>The player's previous location.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsCurrentLocationChanged.PriorLocation">
+            <summary>The player's current location.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsCurrentLocationChanged.#ctor(StardewValley.GameLocation,StardewValley.GameLocation)">
+            <summary>Construct an instance.</summary>
+            <param name="priorLocation">The player's previous location.</param>
+            <param name="newLocation">The player's current location.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsFarmerChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.PlayerEvents.FarmerChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsFarmerChanged.NewFarmer">
+            <summary>The previous player character.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsFarmerChanged.PriorFarmer">
+            <summary>The new player character.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsFarmerChanged.#ctor(StardewValley.Farmer,StardewValley.Farmer)">
+            <summary>Construct an instance.</summary>
+            <param name="priorFarmer">The previous player character.</param>
+            <param name="newFarmer">The new player character.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsGameLocationsChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.LocationEvents.LocationsChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsGameLocationsChanged.NewLocations">
+            <summary>The current list of game locations.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsGameLocationsChanged.#ctor(System.Collections.Generic.List{StardewValley.GameLocation})">
+            <summary>Construct an instance.</summary>
+            <param name="newLocations">The current list of game locations.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsIntChanged">
+            <summary>Event arguments for an integer field that changed value.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsIntChanged.NewInt">
+            <summary>The previous value.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsIntChanged.PriorInt">
+            <summary>The current value.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsIntChanged.#ctor(System.Int32,System.Int32)">
+            <summary>Construct an instance.</summary>
+            <param name="priorInt">The previous value.</param>
+            <param name="newInt">The current value.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsInventoryChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.PlayerEvents.InventoryChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsInventoryChanged.Inventory">
+            <summary>The player's inventory.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsInventoryChanged.Added">
+            <summary>The added items.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsInventoryChanged.Removed">
+            <summary>The removed items.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsInventoryChanged.QuantityChanged">
+            <summary>The items whose stack sizes changed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsInventoryChanged.#ctor(System.Collections.Generic.List{StardewValley.Item},System.Collections.Generic.List{StardewModdingAPI.Inheritance.ItemStackChange})">
+            <summary>Construct an instance.</summary>
+            <param name="inventory">The player's inventory.</param>
+            <param name="changedItems">The inventory changes.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsKeyboardStateChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.KeyboardChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsKeyboardStateChanged.NewState">
+            <summary>The previous keyboard state.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsKeyboardStateChanged.PriorState">
+            <summary>The current keyboard state.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsKeyboardStateChanged.#ctor(Microsoft.Xna.Framework.Input.KeyboardState,Microsoft.Xna.Framework.Input.KeyboardState)">
+            <summary>Construct an instance.</summary>
+            <param name="priorState">The previous keyboard state.</param>
+            <param name="newState">The current keyboard state.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsKeyPressed">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.KeyboardChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsKeyPressed.KeyPressed">
+            <summary>The keyboard button that was pressed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsKeyPressed.#ctor(Microsoft.Xna.Framework.Input.Keys)">
+            <summary>Construct an instance.</summary>
+            <param name="key">The keyboard button that was pressed.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsLevelUp">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.PlayerEvents.LeveledUp"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsLevelUp.Type">
+            <summary>The player skill that leveled up.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsLevelUp.NewLevel">
+            <summary>The new skill level.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsLevelUp.LevelType">
+            <summary>The player skill types.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Events.EventArgsLevelUp.LevelType.Combat">
+            <summary>The combat skill.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Events.EventArgsLevelUp.LevelType.Farming">
+            <summary>The farming skill.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Events.EventArgsLevelUp.LevelType.Fishing">
+            <summary>The fishing skill.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Events.EventArgsLevelUp.LevelType.Foraging">
+            <summary>The foraging skill.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Events.EventArgsLevelUp.LevelType.Mining">
+            <summary>The mining skill.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Events.EventArgsLevelUp.LevelType.Luck">
+            <summary>The luck skill.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsLevelUp.#ctor(StardewModdingAPI.Events.EventArgsLevelUp.LevelType,System.Int32)">
+            <summary>Construct an instance.</summary>
+            <param name="type">The player skill that leveled up.</param>
+            <param name="newLevel">The new skill level.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsLoadedGameChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.PlayerEvents.LoadedGame"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsLoadedGameChanged.LoadedGame">
+            <summary>Whether the save has been loaded. This is always true.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsLoadedGameChanged.#ctor(System.Boolean)">
+            <summary>Construct an instance.</summary>
+            <param name="loaded">Whether the save has been loaded. This is always true.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsLocationObjectsChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.LocationEvents.LocationObjectsChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsLocationObjectsChanged.NewObjects">
+            <summary>The current list of objects in the current location.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsLocationObjectsChanged.#ctor(StardewValley.SerializableDictionary{Microsoft.Xna.Framework.Vector2,StardewValley.Object})">
+            <summary>Construct an instance.</summary>
+            <param name="newObjects">The current list of objects in the current location.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsMineLevelChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.MineEvents.MineLevelChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsMineLevelChanged.PreviousMineLevel">
+            <summary>The previous mine level.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsMineLevelChanged.CurrentMineLevel">
+            <summary>The current mine level.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsMineLevelChanged.#ctor(System.Int32,System.Int32)">
+            <summary>Construct an instance.</summary>
+            <param name="previousMineLevel">The previous mine level.</param>
+            <param name="currentMineLevel">The current mine level.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsMouseStateChanged">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.ControlEvents.MouseChanged"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsMouseStateChanged.PriorState">
+            <summary>The previous mouse state.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsMouseStateChanged.NewState">
+            <summary>The current mouse state.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsMouseStateChanged.PriorPosition">
+            <summary>The previous mouse position on the screen adjusted for the zoom level.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsMouseStateChanged.NewPosition">
+            <summary>The current mouse position on the screen adjusted for the zoom level.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsMouseStateChanged.#ctor(Microsoft.Xna.Framework.Input.MouseState,Microsoft.Xna.Framework.Input.MouseState,Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Point)">
+            <summary>Construct an instance.</summary>
+            <param name="priorState">The previous mouse state.</param>
+            <param name="newState">The current mouse state.</param>
+            <param name="priorPosition">The previous mouse position on the screen adjusted for the zoom level.</param>
+            <param name="newPosition">The current mouse position on the screen adjusted for the zoom level.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsNewDay">
+            <summary>Event arguments for a <see cref="E:StardewModdingAPI.Events.TimeEvents.OnNewDay"/> event.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsNewDay.PreviousDay">
+            <summary>The previous day value.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsNewDay.CurrentDay">
+            <summary>The current day value.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsNewDay.IsNewDay">
+            <summary>Whether the game just started the transition (<c>true</c>) or finished it (<c>false</c>).</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsNewDay.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>Construct an instance.</summary>
+            <param name="priorDay">The previous day value.</param>
+            <param name="newDay">The current day value.</param>
+            <param name="isTransitioning">Whether the game just started the transition (<c>true</c>) or finished it (<c>false</c>).</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.EventArgsStringChanged">
+            <summary>Event arguments for a string field that changed value.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsStringChanged.NewString">
+            <summary>The previous value.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Events.EventArgsStringChanged.PriorString">
+            <summary>The current value.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.EventArgsStringChanged.#ctor(System.String,System.String)">
+            <summary>Construct an instance.</summary>
+            <param name="priorString">The previous value.</param>
+            <param name="newString">The current value.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.GameEvents">
+            <summary>Events raised when the game changes state.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.Initialize">
+            <summary>Raised during launch after configuring XNA or MonoGame. The game window hasn't been opened by this point. Called during <see cref="M:Microsoft.Xna.Framework.Game.Initialize"/>.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.GameLoaded">
+            <summary>Raised during launch after configuring Stardew Valley, loading it into memory, and opening the game window. The window is still blank by this point.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.LoadContent">
+            <summary>Raised before XNA loads or reloads graphics resources. Called during <see cref="M:Microsoft.Xna.Framework.Game.LoadContent"/>.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.FirstUpdateTick">
+            <summary>Raised during the first game update tick.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.UpdateTick">
+            <summary>Raised when the game updates its state (≈60 times per second).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.SecondUpdateTick">
+            <summary>Raised every other tick (≈30 times per second).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.FourthUpdateTick">
+            <summary>Raised every fourth tick (≈15 times per second).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.EighthUpdateTick">
+            <summary>Raised every eighth tick (≈8 times per second).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.QuarterSecondTick">
+            <summary>Raised every 15th tick (≈4 times per second).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.HalfSecondTick">
+            <summary>Raised every 30th tick (≈twice per second).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GameEvents.OneSecondTick">
+            <summary>Raised every 60th tick (≈once per second).</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeGameLoaded(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.GameLoaded"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeInitialize(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GameEvents.Initialize"/> event.</summary>
+            <param name="monitor">Encapsulates logging and monitoring.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeLoadContent(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.LoadContent"/> event.</summary>
+            <param name="monitor">Encapsulates logging and monitoring.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeUpdateTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GameEvents.UpdateTick"/> event.</summary>
+            <param name="monitor">Encapsulates logging and monitoring.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeSecondUpdateTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.SecondUpdateTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeFourthUpdateTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.FourthUpdateTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeEighthUpdateTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.EighthUpdateTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeQuarterSecondTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.QuarterSecondTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeHalfSecondTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.HalfSecondTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeOneSecondTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.OneSecondTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GameEvents.InvokeFirstUpdateTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GameEvents.FirstUpdateTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.GraphicsEvents">
+            <summary>Events raised during the game's draw loop, when the game is rendering content to the window.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.Resize">
+            <summary>Raised after the game window is resized.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.DrawDebug">
+            <summary>Raised when drawing debug information to the screen (when <see cref="P:StardewModdingAPI.Inheritance.SGame.Debug"/> is true). This is called after the sprite batch is begun. If you just want to add debug info, use <see cref="P:StardewModdingAPI.Inheritance.SGame.DebugMessageQueue" /> in your update loop.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.DrawTick">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.DrawInRenderTargetTick">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderEvent">
+            <summary>Raised before drawing everything to the screen during a draw loop.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderEvent">
+            <summary>Raised after drawing everything to the screen during a draw loop.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderHudEvent">
+            <summary>Raised before drawing the HUD (item toolbar, clock, etc) to the screen. The HUD is available at this point, but not necessarily visible. (For example, the event is raised even if a menu is open.)</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderHudEventNoCheck">
+            <summary>Equivalent to <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderHudEvent"/>, but invoked even if the HUD isn't available.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderHudEvent">
+            <summary>Raised after drawing the HUD (item toolbar, clock, etc) to the screen. The HUD is available at this point, but not necessarily visible. (For example, the event is raised even if a menu is open.)</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderHudEventNoCheck">
+            <summary>Equivalent to <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderHudEvent"/>, but invoked even if the HUD isn't available.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderGuiEvent">
+            <summary>Raised before drawing a menu to the screen during a draw loop. This includes the game's internal menus like the title screen.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderGuiEventNoCheck">
+            <summary>Equivalent to <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderGuiEvent"/>, but invoked even if there's no menu being drawn.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderGuiEvent">
+            <summary>Raised after drawing a menu to the screen during a draw loop. This includes the game's internal menus like the title screen.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderGuiEventNoCheck">
+            <summary>Equivalent to <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderGuiEvent"/>, but invoked even if there's no menu being drawn.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeResize(StardewModdingAPI.IMonitor,System.Object,System.EventArgs)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GraphicsEvents.Resize"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="sender">The object which raised the event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeDrawDebug(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GraphicsEvents.DrawDebug"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeDrawTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GraphicsEvents.DrawTick"/> event.</summary>
+            <param name="monitor">Encapsulates logging and monitoring.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeDrawInRenderTargetTick(StardewModdingAPI.IMonitor)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.GraphicsEvents.DrawInRenderTargetTick"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPreRenderEvent(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderEvent"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPostRenderEvent(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderEvent"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPreRenderGuiEvent(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderGuiEvent"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPreRenderGuiEventNoCheck(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderGuiEventNoCheck"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPostRenderGuiEvent(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderGuiEvent"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPostRenderGuiEventNoCheck(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderGuiEventNoCheck"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPreRenderHudEvent(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderHudEvent"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPreRenderHudEventNoCheck(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPreRenderHudEventNoCheck"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPostRenderHudEvent(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderHudEvent"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.GraphicsEvents.InvokeOnPostRenderHudEventNoCheck(StardewModdingAPI.IMonitor)">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.GraphicsEvents.OnPostRenderHudEventNoCheck"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.LocationEvents">
+            <summary>Events raised when the player transitions between game locations, a location is added or removed, or the objects in the current location change.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.LocationEvents.CurrentLocationChanged">
+            <summary>Raised after the player warps to a new location.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.LocationEvents.LocationsChanged">
+            <summary>Raised after a game location is added or removed.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.LocationEvents.LocationObjectsChanged">
+            <summary>Raised after the list of objects in the current location changes (e.g. an object is added or removed).</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.LocationEvents.InvokeCurrentLocationChanged(StardewModdingAPI.IMonitor,StardewValley.GameLocation,StardewValley.GameLocation)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.LocationEvents.CurrentLocationChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorLocation">The player's previous location.</param>
+            <param name="newLocation">The player's current location.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.LocationEvents.InvokeLocationsChanged(StardewModdingAPI.IMonitor,System.Collections.Generic.List{StardewValley.GameLocation})">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.LocationEvents.LocationsChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="newLocations">The current list of game locations.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.LocationEvents.InvokeOnNewLocationObject(StardewModdingAPI.IMonitor,StardewValley.SerializableDictionary{Microsoft.Xna.Framework.Vector2,StardewValley.Object})">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.LocationEvents.LocationObjectsChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="newObjects">The current list of objects in the current location.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.MenuEvents">
+            <summary>Events raised when a game menu is opened or closed (including internal menus like the title screen).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.MenuEvents.MenuChanged">
+            <summary>Raised after a game menu is opened or replaced with another menu. This event is not invoked when a menu is closed.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.MenuEvents.MenuClosed">
+            <summary>Raised after a game menu is closed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.MenuEvents.InvokeMenuChanged(StardewModdingAPI.IMonitor,StardewValley.Menus.IClickableMenu,StardewValley.Menus.IClickableMenu)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.MenuEvents.MenuChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorMenu">The previous menu.</param>
+            <param name="newMenu">The current menu.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.MenuEvents.InvokeMenuClosed(StardewModdingAPI.IMonitor,StardewValley.Menus.IClickableMenu)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.MenuEvents.MenuClosed"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorMenu">The menu that was closed.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.MineEvents">
+            <summary>Events raised when something happens in the mines.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.MineEvents.MineLevelChanged">
+            <summary>Raised after the player warps to a new level of the mine.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.MineEvents.InvokeMineLevelChanged(StardewModdingAPI.IMonitor,System.Int32,System.Int32)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.MineEvents.MineLevelChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="previousMineLevel">The previous mine level.</param>
+            <param name="currentMineLevel">The current mine level.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.PlayerEvents">
+            <summary>Events raised when the player data changes.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.PlayerEvents.LoadedGame">
+            <summary>Raised after the player loads a saved game.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.PlayerEvents.FarmerChanged">
+            <summary>Raised after the game assigns a new player character. This happens just before <see cref="E:StardewModdingAPI.Events.PlayerEvents.LoadedGame"/>; it's unclear how this would happen any other time.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.PlayerEvents.InventoryChanged">
+            <summary>Raised after the player's inventory changes in any way (added or removed item, sorted, etc).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.PlayerEvents.LeveledUp">
+            <summary> Raised after the player levels up a skill. This happens as soon as they level up, not when the game notifies the player after their character goes to bed.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.PlayerEvents.InvokeLoadedGame(StardewModdingAPI.IMonitor,StardewModdingAPI.Events.EventArgsLoadedGameChanged)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.PlayerEvents.LoadedGame"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="loaded">Whether the save has been loaded. This is always true.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.PlayerEvents.InvokeFarmerChanged(StardewModdingAPI.IMonitor,StardewValley.Farmer,StardewValley.Farmer)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.PlayerEvents.FarmerChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorFarmer">The previous player character.</param>
+            <param name="newFarmer">The new player character.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.PlayerEvents.InvokeInventoryChanged(StardewModdingAPI.IMonitor,System.Collections.Generic.List{StardewValley.Item},System.Collections.Generic.IEnumerable{StardewModdingAPI.Inheritance.ItemStackChange})">
+            <summary>Raise an <see cref="E:StardewModdingAPI.Events.PlayerEvents.InventoryChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="inventory">The player's inventory.</param>
+            <param name="changedItems">The inventory changes.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.PlayerEvents.InvokeLeveledUp(StardewModdingAPI.IMonitor,StardewModdingAPI.Events.EventArgsLevelUp.LevelType,System.Int32)">
+            <summary>Rase a <see cref="E:StardewModdingAPI.Events.PlayerEvents.LeveledUp"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="type">The player skill that leveled up.</param>
+            <param name="newLevel">The new skill level.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Events.TimeEvents">
+            <summary>Events raised when the in-game date or time changes.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.TimeEvents.TimeOfDayChanged">
+            <summary>Raised after the in-game clock changes.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.TimeEvents.DayOfMonthChanged">
+            <summary>Raised after the day-of-month value changes, including when loading a save (unlike <see cref="E:StardewModdingAPI.Events.TimeEvents.OnNewDay"/>).</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.TimeEvents.YearOfGameChanged">
+            <summary>Raised after the year value changes.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.TimeEvents.SeasonOfYearChanged">
+            <summary>Raised after the season value changes.</summary>
+        </member>
+        <member name="E:StardewModdingAPI.Events.TimeEvents.OnNewDay">
+            <summary>Raised when the player is transitioning to a new day and the game is performing its day update logic. This event is triggered twice: once after the game starts transitioning, and again after it finishes.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Events.TimeEvents.InvokeTimeOfDayChanged(StardewModdingAPI.IMonitor,System.Int32,System.Int32)">
+            <summary>Raise a <see cref="M:StardewModdingAPI.Events.TimeEvents.InvokeDayOfMonthChanged(StardewModdingAPI.IMonitor,System.Int32,System.Int32)"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorTime">The previous time in military time format (e.g. 6:00pm is 1800).</param>
+            <param name="newTime">The current time in military time format (e.g. 6:10pm is 1810).</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.TimeEvents.InvokeDayOfMonthChanged(StardewModdingAPI.IMonitor,System.Int32,System.Int32)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.TimeEvents.DayOfMonthChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorDay">The previous day value.</param>
+            <param name="newDay">The current day value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.TimeEvents.InvokeYearOfGameChanged(StardewModdingAPI.IMonitor,System.Int32,System.Int32)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.TimeEvents.YearOfGameChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorYear">The previous year value.</param>
+            <param name="newYear">The current year value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.TimeEvents.InvokeSeasonOfYearChanged(StardewModdingAPI.IMonitor,System.String,System.String)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.TimeEvents.SeasonOfYearChanged"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorSeason">The previous season name.</param>
+            <param name="newSeason">The current season name.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Events.TimeEvents.InvokeOnNewDay(StardewModdingAPI.IMonitor,System.Int32,System.Int32,System.Boolean)">
+            <summary>Raise a <see cref="E:StardewModdingAPI.Events.TimeEvents.OnNewDay"/> event.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="priorDay">The previous day value.</param>
+            <param name="newDay">The current day value.</param>
+            <param name="isTransitioning">Whether the game just started the transition (<c>true</c>) or finished it (<c>false</c>).</param>
+        </member>
+        <member name="T:StardewModdingAPI.Extensions">
+            <summary>Provides general utility extensions.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Extensions._random">
+            <summary>The backing field for <see cref="P:StardewModdingAPI.Extensions.Random"/>.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Extensions.Random">
+            <summary>A pseudo-random number generator.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.IsKeyDown(Microsoft.Xna.Framework.Input.Keys)">
+            <summary>Get whether the given key is currently being pressed.</summary>
+            <param name="key">The key to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.RandomColour">
+            <summary>Get a random color.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.ToSingular(System.Collections.IEnumerable,System.String)">
+            <summary>Concatenate an enumeration into a delimiter-separated string.</summary>
+            <param name="ienum">The values to concatenate.</param>
+            <param name="split">The value separator.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.ToSingular``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>Concatenate an enumeration into a delimiter-separated string.</summary>
+            <typeparam name="T">The enumerated value type.</typeparam>
+            <param name="ienum">The values to concatenate.</param>
+            <param name="split">The value separator.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.IsInt32(System.Object)">
+            <summary>Get whether the value can be parsed as a number.</summary>
+            <param name="o">The value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.AsInt32(System.Object)">
+            <summary>Get the numeric representation of a value.</summary>
+            <param name="o">The value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.IsBool(System.Object)">
+            <summary>Get whether the value can be parsed as a boolean.</summary>
+            <param name="o">The value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.AsBool(System.Object)">
+            <summary>Get the boolean representation of a value.</summary>
+            <param name="o">The value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.GetHash(System.Collections.IEnumerable)">
+            <summary>Get a list hash calculated from the hashes of the values it contains.</summary>
+            <param name="enumerable">The values to hash.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.Cast``1(System.Object)">
+            <summary>Cast a value to the given type. This returns <c>null</c> if the value can't be cast.</summary>
+            <typeparam name="T">The type to which to cast.</typeparam>
+            <param name="o">The value.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.GetPrivateFields(System.Object)">
+            <summary>Get all private types on an object.</summary>
+            <param name="o">The object to scan.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.GetBaseFieldInfo(System.Type,System.String)">
+            <summary>Get metadata for a private field.</summary>
+            <param name="t">The type to scan.</param>
+            <param name="name">The name of the field to find.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.GetBaseFieldValue``1(System.Type,System.Object,System.String)">
+            <summary>Get the value of a private field.</summary>
+            <param name="t">The type to scan.</param>
+            <param name="o">The instance for which to get a value.</param>
+            <param name="name">The name of the field to find.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.SetBaseFieldValue``1(System.Type,System.Object,System.String,System.Object)">
+            <summary>Set the value of a private field.</summary>
+            <param name="t">The type to scan.</param>
+            <param name="o">The instance for which to set a value.</param>
+            <param name="name">The name of the field to find.</param>
+            <param name="newValue">The value to set.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Extensions.RemoveNumerics(System.String)">
+            <summary>Get a copy of the string with only alphanumeric characters. (Numbers are not removed, despite the name.)</summary>
+            <param name="st">The string to copy.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.AssemblyRewriting.CachePaths">
+            <summary>Contains the paths for an assembly's cached data.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.AssemblyRewriting.CachePaths.Directory">
+            <summary>The directory path which contains the assembly.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.AssemblyRewriting.CachePaths.Assembly">
+            <summary>The file path of the assembly file.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.AssemblyRewriting.CachePaths.Hash">
+            <summary>The file path containing the MD5 hash for the assembly.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.AssemblyRewriting.CachePaths.#ctor(System.String,System.String,System.String)">
+            <summary>Construct an instance.</summary>
+            <param name="directory">The directory path which contains the assembly.</param>
+            <param name="assembly">The file path of the assembly file.</param>
+            <param name="hash">The file path containing the MD5 hash for the assembly.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter">
+            <summary>Rewrites type references.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.AssemblyMap">
+            <summary>Metadata for mapping assemblies to the current <see cref="T:StardewModdingAPI.AssemblyRewriters.Platform"/>.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.TypeAssemblies">
+            <summary>A type => assembly lookup for types which should be rewritten.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.Monitor">
+            <summary>Encapsulates monitoring and logging.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.#ctor(StardewModdingAPI.AssemblyRewriters.PlatformAssemblyMap,StardewModdingAPI.IMonitor)">
+            <summary>Construct an instance.</summary>
+            <param name="assemblyMap">Metadata for mapping assemblies to the current <see cref="T:StardewModdingAPI.AssemblyRewriters.Platform"/>.</param>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.RewriteAssembly(Mono.Cecil.AssemblyDefinition)">
+            <summary>Rewrite the types referenced by an assembly.</summary>
+            <param name="assembly">The assembly to rewrite.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.ChangeTypeScope(Mono.Cecil.TypeReference,System.Boolean)">
+            <summary>Get the correct reference to use for compatibility with the current platform.</summary>
+            <param name="type">The type reference to rewrite.</param>
+            <param name="shouldLog">Whether to log a message.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.AssemblyRewriting.AssemblyTypeRewriter.GetMethods(Mono.Cecil.ModuleDefinition)">
+            <summary>Get all methods in a module.</summary>
+            <param name="module">The module to search.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.DeprecationLevel">
+            <summary>Indicates how deprecated something is.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.DeprecationLevel.Notice">
+            <summary>It's deprecated but won't be removed soon. Mod authors have some time to update their mods. Deprecation warnings should be logged, but not written to the console.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.DeprecationLevel.Info">
+            <summary>Mods should no longer be using it. Deprecation messages should be debug entries in the console.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.DeprecationLevel.PendingRemoval">
+            <summary>The code will be removed soon. Deprecation messages should be warnings in the console.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.DeprecationManager">
+            <summary>Manages deprecation warnings.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.DeprecationManager.LoggedDeprecations">
+            <summary>The deprecations which have already been logged (as 'mod name::noun phrase::version').</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.DeprecationManager.Monitor">
+            <summary>Encapsulates monitoring and logging for a given module.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.DeprecationManager.ModRegistry">
+            <summary>Tracks the installed mods.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.DeprecationManager.#ctor(StardewModdingAPI.IMonitor,StardewModdingAPI.Framework.ModRegistry)">
+            <summary>Construct an instance.</summary>
+            <param name="monitor">Encapsulates monitoring and logging for a given module.</param>
+            <param name="modRegistry">Tracks the installed mods.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.DeprecationManager.Warn(System.String,System.String,StardewModdingAPI.Framework.DeprecationLevel)">
+            <summary>Log a deprecation warning.</summary>
+            <param name="nounPhrase">A noun phrase describing what is deprecated.</param>
+            <param name="version">The SMAPI version which deprecated it.</param>
+            <param name="severity">How deprecated the code is.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.DeprecationManager.Warn(System.String,System.String,System.String,StardewModdingAPI.Framework.DeprecationLevel)">
+            <summary>Log a deprecation warning.</summary>
+            <param name="source">The friendly mod name which used the deprecated code.</param>
+            <param name="nounPhrase">A noun phrase describing what is deprecated.</param>
+            <param name="version">The SMAPI version which deprecated it.</param>
+            <param name="severity">How deprecated the code is.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.DeprecationManager.MarkWarned(System.String,System.String)">
+            <summary>Mark a deprecation warning as already logged.</summary>
+            <param name="nounPhrase">A noun phrase describing what is deprecated (e.g. "the Extensions.AsInt32 method").</param>
+            <param name="version">The SMAPI version which deprecated it.</param>
+            <returns>Returns whether the deprecation was successfully marked as warned. Returns <c>false</c> if it was already marked.</returns>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.DeprecationManager.MarkWarned(System.String,System.String,System.String)">
+            <summary>Mark a deprecation warning as already logged.</summary>
+            <param name="source">The friendly name of the assembly which used the deprecated code.</param>
+            <param name="nounPhrase">A noun phrase describing what is deprecated (e.g. "the Extensions.AsInt32 method").</param>
+            <param name="version">The SMAPI version which deprecated it.</param>
+            <returns>Returns whether the deprecation was successfully marked as warned. Returns <c>false</c> if it was already marked.</returns>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.DeprecationManager.IsVirtualMethodImplemented(System.Type,System.Type,System.String,System.Type[])">
+            <summary>Get whether a type implements the given virtual method.</summary>
+            <param name="subtype">The type to check.</param>
+            <param name="baseType">The base type which declares the virtual method.</param>
+            <param name="name">The method name.</param>
+            <param name="argumentTypes">The expected argument types.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.InternalExtensions">
+            <summary>Provides extension methods for SMAPI's internal use.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.InternalExtensions.SafelyRaisePlainEvent(StardewModdingAPI.IMonitor,System.String,System.Collections.Generic.IEnumerable{System.Delegate},System.Object,System.EventArgs)">
+            <summary>Safely raise an <see cref="T:System.EventHandler"/> event, and intercept any exceptions thrown by its handlers.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="name">The event name for error messages.</param>
+            <param name="handlers">The event handlers.</param>
+            <param name="sender">The event sender.</param>
+            <param name="args">The event arguments (or <c>null</c> to pass <see cref="F:System.EventArgs.Empty"/>).</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.InternalExtensions.SafelyRaiseGenericEvent``1(StardewModdingAPI.IMonitor,System.String,System.Collections.Generic.IEnumerable{System.Delegate},System.Object,``0)">
+            <summary>Safely raise an <see cref="T:System.EventHandler`1"/> event, and intercept any exceptions thrown by its handlers.</summary>
+            <typeparam name="TEventArgs">The event argument object type.</typeparam>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+            <param name="name">The event name for error messages.</param>
+            <param name="handlers">The event handlers.</param>
+            <param name="sender">The event sender.</param>
+            <param name="args">The event arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.InternalExtensions.GetLogSummary(System.Exception)">
+            <summary>Get a string representation of an exception suitable for writing to the error log.</summary>
+            <param name="exception">The error to summarise.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.ModAssemblyLoader">
+            <summary>Preprocesses and loads mod assemblies.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.ModAssemblyLoader.CacheDirPath">
+            <summary>The directory in which to cache data.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.ModAssemblyLoader.AssemblyMap">
+            <summary>Metadata for mapping assemblies to the current <see cref="T:StardewModdingAPI.AssemblyRewriters.Platform"/>.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.ModAssemblyLoader.AssemblyTypeRewriter">
+            <summary>Rewrites assembly types to match the current platform.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.ModAssemblyLoader.Monitor">
+            <summary>Encapsulates monitoring and logging.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModAssemblyLoader.#ctor(System.String,StardewModdingAPI.AssemblyRewriters.Platform,StardewModdingAPI.IMonitor)">
+            <summary>Construct an instance.</summary>
+            <param name="cacheDirPath">The cache directory.</param>
+            <param name="targetPlatform">The current game platform.</param>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModAssemblyLoader.ProcessAssembly(System.String)">
+            <summary>Preprocess an assembly and cache the modified version.</summary>
+            <param name="assemblyPath">The assembly file path.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModAssemblyLoader.LoadCachedAssembly(System.String)">
+            <summary>Load a preprocessed assembly.</summary>
+            <param name="assemblyPath">The assembly file path.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModAssemblyLoader.ResolveAssembly(System.String)">
+            <summary>Resolve an assembly from its name.</summary>
+            <param name="name">The assembly name.</param>
+            <remarks>
+            This implementation returns the first loaded assembly which matches the short form of
+            the assembly name, to resolve assembly resolution issues when rewriting
+            assemblies (especially with Mono). Since this is meant to be called on <see cref="E:System.AppDomain.AssemblyResolve"/>,
+            the implicit assumption is that loading the exact assembly failed.
+            </remarks>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModAssemblyLoader.GetCacheInfo(System.String)">
+            <summary>Get the cache details for an assembly.</summary>
+            <param name="assemblyPath">The assembly file path.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.LogFileManager">
+            <summary>Manages reading and writing to log file.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.LogFileManager.Stream">
+            <summary>The underlying stream writer.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.LogFileManager.#ctor(System.String)">
+            <summary>Construct an instance.</summary>
+            <param name="path">The log file to write.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.LogFileManager.WriteLine(System.String)">
+            <summary>Write a message to the log.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.LogFileManager.Dispose">
+            <summary>Release all resources.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.ModRegistry">
+            <summary>Tracks the installed mods.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.ModRegistry.ModNamesByAssembly">
+            <summary>The friendly mod names treated as deprecation warning sources (assembly full name => mod name).</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModRegistry.Add(StardewModdingAPI.Manifest,System.Reflection.Assembly)">
+            <summary>Register a mod as a possible source of deprecation warnings.</summary>
+            <param name="manifest">The mod manifest.</param>
+            <param name="assembly">The mod assembly.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.ModRegistry.GetModFromStack">
+            <summary>Get the friendly name for the closest assembly registered as a source of deprecation warnings.</summary>
+            <returns>Returns the source name, or <c>null</c> if no registered assemblies were found.</returns>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.UpdateHelper">
+            <summary>Provides utility methods for mod updates.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.UpdateHelper.GetLatestVersionAsync(System.String)">
+            <summary>Get the latest release from a GitHub repository.</summary>
+            <param name="repository">The name of the repository from which to fetch releases (like "cjsu/SMAPI").</param>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.GitRelease">
+            <summary>Metadata about a GitHub release tag.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.GitRelease.Name">
+            <summary>The display name.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.GitRelease.Tag">
+            <summary>The semantic version string.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.UserSettings">
+            <summary>Contains user settings from SMAPI's JSON configuration file.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.UserSettings.DeveloperMode">
+            <summary>Whether to enable development features.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Framework.Monitor">
+            <summary>Encapsulates monitoring and logic for a given module.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.Monitor.Source">
+            <summary>The name of the module which logs messages using this instance.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.Monitor.LogFile">
+            <summary>The log file to which to write messages.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.Monitor.MaxLevelLength">
+            <summary>The maximum length of the <see cref="T:StardewModdingAPI.LogLevel"/> values.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Framework.Monitor.Colors">
+            <summary>The console text color for each log level.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Framework.Monitor.ShowTraceInConsole">
+            <summary>Whether to show trace messages in the console.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.Monitor.#ctor(System.String,StardewModdingAPI.Framework.LogFileManager)">
+            <summary>Construct an instance.</summary>
+            <param name="source">The name of the module which logs messages using this instance.</param>
+            <param name="logFile">The log file to which to write messages.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.Monitor.Log(System.String,StardewModdingAPI.LogLevel)">
+            <summary>Log a message for the player or developer.</summary>
+            <param name="message">The message to log.</param>
+            <param name="level">The log severity level.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.Monitor.ExitGameImmediately(System.String)">
+            <summary>Immediately exit the game without saving. This should only be invoked when an irrecoverable fatal error happens that risks save corruption or game-breaking bugs.</summary>
+            <param name="reason">The reason for the shutdown.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.Monitor.LogFatal(System.String)">
+            <summary>Log a fatal error message.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.Monitor.LegacyLog(System.String,System.String,System.ConsoleColor,StardewModdingAPI.LogLevel)">
+            <summary>Log a message for the player or developer, using the specified console color.</summary>
+            <param name="source">The name of the mod logging the message.</param>
+            <param name="message">The message to log.</param>
+            <param name="color">The console color.</param>
+            <param name="level">The log level.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Framework.Monitor.LogImpl(System.String,System.String,System.ConsoleColor,StardewModdingAPI.LogLevel)">
+            <summary>Write a message line to the log.</summary>
+            <param name="source">The name of the mod logging the message.</param>
+            <param name="message">The message to log.</param>
+            <param name="color">The console color.</param>
+            <param name="level">The log level.</param>
+        </member>
+        <member name="T:StardewModdingAPI.IModHelper">
+            <summary>Provides methods for interacting with a mod directory.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.IModHelper.DirectoryPath">
+            <summary>The mod directory path.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.IModHelper.ReadConfig``1">
+            <summary>Read the mod's configuration file (and create it if needed).</summary>
+            <typeparam name="TConfig">The config class type. This should be a plain class that has public properties for the settings you want. These can be complex types.</typeparam>
+        </member>
+        <member name="M:StardewModdingAPI.IModHelper.WriteConfig``1(``0)">
+            <summary>Save to the mod's configuration file.</summary>
+            <typeparam name="TConfig">The config class type.</typeparam>
+            <param name="config">The config settings to save.</param>
+        </member>
+        <member name="M:StardewModdingAPI.IModHelper.ReadJsonFile``1(System.String)">
+            <summary>Read a JSON file.</summary>
+            <typeparam name="TModel">The model type.</typeparam>
+            <param name="path">The file path relative to the mod directory.</param>
+            <returns>Returns the deserialised model, or <c>null</c> if the file doesn't exist or is empty.</returns>
+        </member>
+        <member name="M:StardewModdingAPI.IModHelper.WriteJsonFile``1(System.String,``0)">
+            <summary>Save to a JSON file.</summary>
+            <typeparam name="TModel">The model type.</typeparam>
+            <param name="path">The file path relative to the mod directory.</param>
+            <param name="model">The model to save.</param>
+        </member>
+        <member name="T:StardewModdingAPI.LogLevel">
+            <summary>The log severity levels.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.LogLevel.Trace">
+            <summary>Tracing info intended for developers.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.LogLevel.Debug">
+            <summary>Troubleshooting info that may be relevant to the player.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.LogLevel.Info">
+            <summary>Info relevant to the player. This should be used judiciously.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.LogLevel.Warn">
+            <summary>An issue the player should be aware of. This should be used rarely.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.LogLevel.Error">
+            <summary>A message indicating something went wrong.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.LogLevel.Alert">
+            <summary>Important information to highlight for the player when player action is needed (e.g. new version available). This should be used rarely to avoid alert fatigue.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.IMonitor">
+            <summary>Encapsulates monitoring and logging for a given module.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.IMonitor.Log(System.String,StardewModdingAPI.LogLevel)">
+            <summary>Log a message for the player or developer.</summary>
+            <param name="message">The message to log.</param>
+            <param name="level">The log severity level.</param>
+        </member>
+        <member name="M:StardewModdingAPI.IMonitor.ExitGameImmediately(System.String)">
+            <summary>Immediately exit the game without saving. This should only be invoked when an irrecoverable fatal error happens that risks save corruption or game-breaking bugs.</summary>
+            <param name="reason">The reason for the shutdown.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Inheritance.ChangeType">
+            <summary>Indicates how an inventory item changed.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.ChangeType.Removed">
+            <summary>The entire stack was removed.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.ChangeType.Added">
+            <summary>The entire stack was added.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.ChangeType.StackChange">
+            <summary>The stack size changed.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Inheritance.ItemStackChange">
+            <summary>Represents an inventory slot that changed.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.ItemStackChange.Item">
+            <summary>The item in the slot.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.ItemStackChange.StackChange">
+            <summary>The amount by which the item's stack size changed.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.ItemStackChange.ChangeType">
+            <summary>How the inventory slot changed.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Inheritance.SObject">
+            <summary>Provides access to the game's <see cref="T:StardewValley.Object"/> internals.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Inheritance.SGame">
+            <summary>SMAPI's extension of the game's core <see cref="T:StardewValley.Game1"/>, used to inject events.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.SGame.FireLoadedGameEvent">
+            <summary>Whether to raise <see cref="E:StardewModdingAPI.Events.PlayerEvents.LoadedGame"/> on the next tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.DebugMessageQueue">
+            <summary>The debug messages to add to the next debug output.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.ZoomLevelIsOne">
+            <summary>Whether the game's zoom level is at 100% (i.e. nothing should be scaled).</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.SGame.Monitor">
+            <summary>Encapsulates monitoring and logging.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.SGame.PreviouslyPressedButtons">
+            <summary>Arrays of pressed controller buttons indexed by <see cref="T:Microsoft.Xna.Framework.PlayerIndex"/>.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.KStateNow">
+            <summary>A record of the keyboard state (i.e. the up/down state for each button) as of the latest tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.KStatePrior">
+            <summary>A record of the keyboard state (i.e. the up/down state for each button) as of the previous tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.MStateNow">
+            <summary>A record of the mouse state (i.e. the cursor position, scroll amount, and the up/down state for each button) as of the latest tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.MStatePrior">
+            <summary>A record of the mouse state (i.e. the cursor position, scroll amount, and the up/down state for each button) as of the previous tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.MPositionNow">
+            <summary>The current mouse position on the screen adjusted for the zoom level.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.MPositionPrior">
+            <summary>The previous mouse position on the screen adjusted for the zoom level.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.CurrentlyPressedKeys">
+            <summary>The keys that were pressed as of the latest tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviouslyPressedKeys">
+            <summary>The keys that were pressed as of the previous tick.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.FramePressedKeys">
+            <summary>The keys that just entered the down state.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.FrameReleasedKeys">
+            <summary>The keys that just entered the up state.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviouslyLoadedGame">
+            <summary>Whether a save is currently loaded at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousGameLocations">
+            <summary>A hash of <see cref="F:StardewValley.Game1.locations"/> at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousLocationObjects">
+            <summary>A hash of the current location's <see cref="F:StardewValley.GameLocation.objects"/> at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousItems">
+            <summary>The player's inventory at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousCombatLevel">
+            <summary>The player's combat skill level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousFarmingLevel">
+            <summary>The player's farming skill level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousFishingLevel">
+            <summary>The player's fishing skill level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousForagingLevel">
+            <summary>The player's foraging skill level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousMiningLevel">
+            <summary>The player's mining skill level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousLuckLevel">
+            <summary>The player's luck skill level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousGameLocation">
+            <summary>The player's location at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousActiveMenu">
+            <summary>The active game menu at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousMineLevel">
+            <summary>The mine level at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousTimeOfDay">
+            <summary>The time of day (in 24-hour military format) at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousDayOfMonth">
+            <summary>The day of month (1–28) at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousSeasonOfYear">
+            <summary>The season name (winter, spring, summer, or fall) at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousYearOfGame">
+            <summary>The year number at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousIsNewDay">
+            <summary>Whether the game was transitioning to a new day at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.PreviousFarmer">
+            <summary>The player character at last check.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.CurrentUpdateTick">
+            <summary>An index incremented on every tick and reset every 60th tick (0–59).</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.FirstUpdate">
+            <summary>Whether this is the very first update tick since the game started.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.Screen">
+            <summary>The game's current render target.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.BgColour">
+            <summary>The game's current background color.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.Instance">
+            <summary>The current game instance.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.FramesPerSecond">
+            <summary>The game's current frame rate, recalculated on each draw update.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.Debug">
+            <summary>Whether we're in pseudo-debug mode, which shows information like FPS.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Inheritance.SGame.CurrentFarmer">
+            <summary>The current player.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.SGame.DrawFarmBuildings">
+            <summary>The game method which draws the farm buildings.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.SGame.DrawHUD">
+            <summary>The game method which draws the game HUD.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Inheritance.SGame.DrawDialogueBox">
+            <summary>The game method which draws the current dialogue box, if any.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetButtonsDown(Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get the controller buttons which are currently pressed.</summary>
+            <param name="index">The controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetFramePressedButtons(Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get the controller buttons which were pressed after the last update.</summary>
+            <param name="index">The controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetFrameReleasedButtons(Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get the controller buttons which were released after the last update.</summary>
+            <param name="index">The controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.QueueDebugMessage(System.String)">
+            <summary>Queue a message to be added to the debug output.</summary>
+            <param name="message">The message to add.</param>
+            <returns>Returns whether the message was successfully queued.</returns>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.#ctor(StardewModdingAPI.IMonitor)">
+            <summary>Construct an instance.</summary>
+            <param name="monitor">Encapsulates monitoring and logging.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.Initialize">
+            <summary>The method called during game launch after configuring XNA or MonoGame. The game window hasn't been opened by this point.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.LoadContent">
+            <summary>The method called before XNA or MonoGame loads or reloads graphics resources.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>The method called when the game is updating its state. This happens roughly 60 times per second.</summary>
+            <param name="gameTime">A snapshot of the game timing state.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>The method called to draw everything to the screen.</summary>
+            <param name="gameTime">A snapshot of the game timing state.</param>
+            <remarks>This implementation is identical to <see cref="M:StardewValley.Game1.Draw(Microsoft.Xna.Framework.GameTime)"/>, except for minor formatting and added events.</remarks>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.WasButtonJustPressed(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.Input.ButtonState,Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get whether a controller button was pressed since the last check.</summary>
+            <param name="button">The controller button to check.</param>
+            <param name="buttonState">The last known state.</param>
+            <param name="stateIndex">The player whose controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.WasButtonJustReleased(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.Input.ButtonState,Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get whether a controller button was released since the last check.</summary>
+            <param name="button">The controller button to check.</param>
+            <param name="buttonState">The last known state.</param>
+            <param name="stateIndex">The player whose controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.WasButtonJustPressed(Microsoft.Xna.Framework.Input.Buttons,System.Single,Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get whether an analogue controller button was pressed since the last check.</summary>
+            <param name="button">The controller button to check.</param>
+            <param name="value">The last known value.</param>
+            <param name="stateIndex">The player whose controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.WasButtonJustReleased(Microsoft.Xna.Framework.Input.Buttons,System.Single,Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>Get whether an analogue controller button was released since the last check.</summary>
+            <param name="button">The controller button to check.</param>
+            <param name="value">The last known value.</param>
+            <param name="stateIndex">The player whose controller to check.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.UpdateEventCalls">
+            <summary>Detect changes since the last update ticket and trigger mod events.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetInventoryChanges(System.Collections.Generic.IEnumerable{StardewValley.Item},System.Collections.Generic.IDictionary{StardewValley.Item,System.Int32})">
+            <summary>Get the player inventory changes between two states.</summary>
+            <param name="current">The player's current inventory.</param>
+            <param name="previous">The player's previous inventory.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetHash(System.Collections.IEnumerable)">
+            <summary>Get a hash value for an enumeration.</summary>
+            <param name="enumerable">The enumeration of items to hash.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetBaseFieldInfo(System.String)">
+            <summary>Get reflection metadata for a private <see cref="T:StardewValley.Game1"/> field.</summary>
+            <param name="name">The field name.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.GetBaseFieldValue``1(System.String)">
+            <summary>Get the value of a private <see cref="T:StardewValley.Game1"/> field.</summary>
+            <typeparam name="TValue">The expected value type.</typeparam>
+            <param name="name">The field name.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Inheritance.SGame.SetBaseFieldValue``1(System.String,System.Object)">
+            <summary>Set the value of a private <see cref="T:StardewValley.Game1"/> field.</summary>
+            <typeparam name="TValue">The expected value type.</typeparam>
+            <param name="name">The field name.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Log">
+            <summary>A singleton which logs messages to the SMAPI console and log file.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Log.Monitor">
+            <summary>The underlying logger.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Log.ModRegistry">
+            <summary>Tracks the installed mods.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.CurrentDomain_UnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>Log an exception event.</summary>
+            <param name="sender">The event sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Application_ThreadException(System.Object,System.Threading.ThreadExceptionEventArgs)">
+            <summary>Log a thread exception event.</summary>
+            <param name="sender">The event sender.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.SyncColour(System.Object,System.ConsoleColor)">
+            <summary>Synchronously log a message to the console. NOTE: synchronous logging is discouraged; use asynchronous methods instead.</summary>
+            <param name="message">The message to log.</param>
+            <param name="color">The message color.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncColour(System.Object,System.ConsoleColor)">
+            <summary>Asynchronously log a message to the console with the specified color.</summary>
+            <param name="message">The message to log.</param>
+            <param name="color">The message color.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Async(System.Object)">
+            <summary>Asynchronously log a message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncR(System.Object)">
+            <summary>Asynchronously log a red message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncO(System.Object)">
+            <summary>Asynchronously log an orange message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncY(System.Object)">
+            <summary>Asynchronously log a yellow message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncG(System.Object)">
+            <summary>Asynchronously log a green message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncC(System.Object)">
+            <summary>Asynchronously log a cyan message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.AsyncM(System.Object)">
+            <summary>Asynchronously log a magenta message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Warning(System.Object)">
+            <summary>Asynchronously log a warning to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Error(System.Object)">
+            <summary>Asynchronously log an error to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Success(System.Object)">
+            <summary>Asynchronously log a success message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Info(System.Object)">
+            <summary>Asynchronously log an info message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Out(System.Object)">
+            <summary>Asynchronously log an info message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Debug(System.Object)">
+            <summary>Asynchronously log a debug message to the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.LogToFile(System.String)">
+            <summary>Asynchronously log a message to the file that's not shown in the console.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.LogValueNotSpecified">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.LogObjectValueNotSpecified">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.LogValueInvalid">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.LogObjectInvalid">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.LogValueNotInt32">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.PrintLog(System.Object,System.Boolean,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="disableLogging">Obsolete.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Success(System.Object,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Verbose(System.Object,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Comment(System.Object,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Info(System.Object,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Error(System.Object,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.Debug(System.Object,System.Object[])">
+            <summary>Obsolete.</summary>
+            <param name="message">The message to log.</param>
+            <param name="values">Obsolete.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Log.WarnDeprecated">
+            <summary>Raise a deprecation warning.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Log.GetModName">
+            <summary>Get the name of the mod logging a message from the stack.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.LogInfo">
+            <summary>A message queued for log output.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.LogInfo.Message">
+            <summary>The message to log.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.LogInfo.LogDate">
+            <summary>The log date.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.LogInfo.LogTime">
+            <summary>The log time.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.LogInfo.Colour">
+            <summary>The message color.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.LogInfo.PrintConsole">
+            <summary>Whether the message should be printed to the console.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.LogInfo.#ctor(System.String,System.ConsoleColor)">
+            <summary>Construct an instance.</summary>
+            <param name="message">The message to log.</param>
+            <param name="color">The message color.</param>
+        </member>
+        <member name="T:StardewModdingAPI.LogWriter">
+            <summary>A log writer which queues messages for output, and periodically flushes them to the console and log file.</summary>
+            <remarks>Only one instance should be created.</remarks>
+        </member>
+        <member name="F:StardewModdingAPI.LogWriter.LogFile">
+            <summary>Manages reading and writing to the log file.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.LogWriter.#ctor(StardewModdingAPI.Framework.LogFileManager)">
+            <summary>Construct an instance.</summary>
+            <param name="logFile">Manages reading and writing to the log file.</param>
+        </member>
+        <member name="M:StardewModdingAPI.LogWriter.WriteToLog(System.String)">
+            <summary>Queue a message for output.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.LogWriter.WriteToLog(StardewModdingAPI.LogInfo)">
+            <summary>Queue a message for output.</summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:StardewModdingAPI.LogWriter.WarnDeprecated">
+            <summary>Raise a deprecation warning.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Manifest">
+            <summary>A manifest which describes a mod for SMAPI.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.UsedAuthourField">
+            <summary>Whether the manifest defined the deprecated <see cref="P:StardewModdingAPI.Manifest.Authour"/> field.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.Name">
+            <summary>The mod name.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.Author">
+            <summary>The mod author's name.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.Authour">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.Version">
+            <summary>The mod version.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.Description">
+            <summary>A brief description of the mod.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.UniqueID">
+            <summary>The unique mod ID.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.PerSaveConfigs">
+            <summary>Whether the mod uses per-save config files.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.MinimumApiVersion">
+            <summary>The minimum SMAPI version required by this mod, if any.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Manifest.EntryDll">
+            <summary>The name of the DLL in the directory that has the <see cref="M:StardewModdingAPI.Mod.Entry(System.Object[])"/> method.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Mod">
+            <summary>The base class for a mod.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Mod._pathOnDisk">
+            <summary>The backing field for <see cref="P:StardewModdingAPI.Mod.PathOnDisk"/>.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.Helper">
+            <summary>Provides methods for interacting with the mod directory, such as read/writing a config file or custom JSON files.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.Monitor">
+            <summary>Writes messages to the console and log file.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.Manifest">
+            <summary>The mod's manifest.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.PathOnDisk">
+            <summary>The full path to the mod's directory on the disk.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.BaseConfigPath">
+            <summary>The full path to the mod's <c>config.json</c> file on the disk.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.PerSaveConfigFolder">
+            <summary>The full path to the per-save configs folder (if <see cref="P:StardewModdingAPI.Manifest.PerSaveConfigs"/> is <c>true</c>).</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Mod.PerSaveConfigPath">
+            <summary>The full path to the per-save configuration file for the current save (if <see cref="P:StardewModdingAPI.Manifest.PerSaveConfigs"/> is <c>true</c>).</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Mod.Entry(System.Object[])">
+            <summary>The mod entry point, called after the mod is first loaded.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Mod.Entry(StardewModdingAPI.ModHelper)">
+            <summary>The mod entry point, called after the mod is first loaded.</summary>
+            <param name="helper">Provides methods for interacting with the mod directory, such as read/writing a config file or custom JSON files.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Mod.Entry(StardewModdingAPI.IModHelper)">
+            <summary>The mod entry point, called after the mod is first loaded.</summary>
+            <param name="helper">Provides methods for interacting with the mod directory, such as read/writing a config file or custom JSON files.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Mod.GetPerSaveConfigFolder">
+            <summary>Get the full path to the per-save configuration file for the current save (if <see cref="P:StardewModdingAPI.Manifest.PerSaveConfigs"/> is <c>true</c>).</summary>
+        </member>
+        <member name="T:StardewModdingAPI.ModHelper">
+            <summary>Provides methods for interacting with a mod directory.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.ModHelper.DirectoryPath">
+            <summary>The mod directory path.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.ModHelper.#ctor(System.String)">
+            <summary>Construct an instance.</summary>
+            <param name="modDirectory">The mod directory path.</param>
+        </member>
+        <member name="M:StardewModdingAPI.ModHelper.ReadConfig``1">
+            <summary>Read the mod's configuration file (and create it if needed).</summary>
+            <typeparam name="TConfig">The config class type. This should be a plain class that has public properties for the settings you want. These can be complex types.</typeparam>
+        </member>
+        <member name="M:StardewModdingAPI.ModHelper.WriteConfig``1(``0)">
+            <summary>Save to the mod's configuration file.</summary>
+            <typeparam name="TConfig">The config class type.</typeparam>
+            <param name="config">The config settings to save.</param>
+        </member>
+        <member name="M:StardewModdingAPI.ModHelper.ReadJsonFile``1(System.String)">
+            <summary>Read a JSON file.</summary>
+            <typeparam name="TModel">The model type.</typeparam>
+            <param name="path">The file path relative to the mod directory.</param>
+            <returns>Returns the deserialised model, or <c>null</c> if the file doesn't exist or is empty.</returns>
+        </member>
+        <member name="M:StardewModdingAPI.ModHelper.WriteJsonFile``1(System.String,``0)">
+            <summary>Save to a JSON file.</summary>
+            <typeparam name="TModel">The model type.</typeparam>
+            <param name="path">The file path relative to the mod directory.</param>
+            <param name="model">The model to save.</param>
+        </member>
+        <member name="T:StardewModdingAPI.Program">
+            <summary>The main entry point for SMAPI, responsible for hooking into and launching the game.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.TargetPlatform">
+            <summary>The target game platform.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.GameExecutablePath">
+            <summary>The full path to the Stardew Valley executable.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.ModPath">
+            <summary>The full path to the folder containing mods.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.CachePath">
+            <summary>The full path to the folder containing cached SMAPI data.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.LogFile">
+            <summary>The log file to which to write messages.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.Monitor">
+            <summary>The core logger for SMAPI.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.DeveloperMode">
+            <summary>Whether SMAPI is running in developer mode.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.CancellationTokenSource">
+            <summary>Tracks whether the game should exit immediately and any pending initialisation should be cancelled.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.ModsLoaded">
+            <summary>The number of mods currently loaded by SMAPI.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.gamePtr">
+            <summary>The underlying game instance.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.ready">
+            <summary>Whether the game is currently running.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.StardewAssembly">
+            <summary>The underlying game assembly.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.StardewProgramType">
+            <summary>The underlying <see cref="T:StardewValley.Program"/> type.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.StardewGameInfo">
+            <summary>The field containing game's main instance.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Program.BuildType">
+            <summary>The game's build type (i.e. GOG vs Steam).</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.ModRegistry">
+            <summary>Tracks the installed mods.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Program.DeprecationManager">
+            <summary>Manages deprecation warnings.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.Main">
+            <summary>The main entry point which hooks into and launches the game.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.ExitGameImmediately(System.String,System.String)">
+            <summary>Immediately exit the game without saving. This should only be invoked when an irrecoverable fatal error happens that risks save corruption or game-breaking bugs.</summary>
+            <param name="module">The module which requested an immediate exit.</param>
+            <param name="reason">The reason provided for the shutdown.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Program.GetLegacyMonitorForMod">
+            <summary>Get a monitor for legacy code which doesn't have one passed in.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.CheckForUpdateAsync">
+            <summary>Asynchronously check for a new version of SMAPI, and print a message to the console if an update is available.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.StartGame">
+            <summary>Hook into Stardew Valley and launch the game.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.VerifyPath(System.String)">
+            <summary>Create a directory path if it doesn't exist.</summary>
+            <param name="path">The directory path.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Program.LoadMods">
+            <summary>Load and hook up all mods in the mod directory.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.ConsoleInputLoop">
+            <summary>Run a loop handling console input.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Program.help_CommandFired(System.Object,StardewModdingAPI.Events.EventArgsCommand)">
+            <summary>The method called when the user submits the help command in the console.</summary>
+            <param name="sender">The event sender.</param>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Program.PressAnyKeyToExit">
+            <summary>Show a 'press any key to exit' message, and exit when they press a key.</summary>
+        </member>
+        <member name="T:StardewModdingAPI.Version">
+            <summary>A semantic version with an optional release tag.</summary>
+        </member>
+        <member name="F:StardewModdingAPI.Version.Regex">
+            <summary>A regular expression matching a semantic version string.</summary>
+            <remarks>Derived from https://github.com/maxhauser/semver.</remarks>
+        </member>
+        <member name="P:StardewModdingAPI.Version.MajorVersion">
+            <summary>The major version incremented for major API changes.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Version.MinorVersion">
+            <summary>The minor version incremented for backwards-compatible changes.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Version.PatchVersion">
+            <summary>The patch version for backwards-compatible bug fixes.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Version.Build">
+            <summary>An optional build tag.</summary>
+        </member>
+        <member name="P:StardewModdingAPI.Version.VersionString">
+            <summary>Obsolete.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Version.#ctor(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>Construct an instance.</summary>
+            <param name="major">The major version incremented for major API changes.</param>
+            <param name="minor">The minor version incremented for backwards-compatible changes.</param>
+            <param name="patch">The patch version for backwards-compatible bug fixes.</param>
+            <param name="build">An optional build tag.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Version.#ctor(System.String)">
+            <summary>Construct an instance.</summary>
+            <param name="version">The semantic version string.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Version.CompareTo(StardewModdingAPI.Version)">
+            <summary>Get an integer indicating whether this version precedes (less than 0), supercedes (more than 0), or is equivalent to (0) the specified version.</summary>
+            <param name="other">The version to compare with this instance.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Version.IsNewerThan(StardewModdingAPI.Version)">
+            <summary>Get whether this version is newer than the specified version.</summary>
+            <param name="other">The version to compare with this instance.</param>
+        </member>
+        <member name="M:StardewModdingAPI.Version.ToString">
+            <summary>Get a string representation of the version.</summary>
+        </member>
+        <member name="M:StardewModdingAPI.Version.GetNormalisedTag(System.String)">
+            <summary>Get a normalised build tag.</summary>
+            <param name="tag">The tag to normalise.</param>
+        </member>
+    </members>
+</doc>
