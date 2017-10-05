@@ -1,5 +1,6 @@
 using System;
 using StardewModdingAPI;
+using StardewModdingAPI.Events;
 using StardewValley;
 
 namespace Main
@@ -12,10 +13,11 @@ namespace Main
         public override void Entry(IModHelper helper)
         {
             config = helper.ReadConfig<ModConfig>();
-            StardewModdingAPI.Events.PlayerEvents.LoadedGame += Event_LoadedGame;
+            
+            SaveEvents.AfterLoad += SaveEvents_AfterLoad;
         }
 
-        private void Event_LoadedGame(object sender, EventArgs e)
+        private void SaveEvents_AfterLoad(object sender, EventArgs e)
         {
             int totalSpeed = config.runSpeed;
 
@@ -23,7 +25,7 @@ namespace Main
             {
                 addedSpeed = totalSpeed - 5;
                 Monitor.Log("FasterRun run speed is set to " + totalSpeed, LogLevel.Debug);
-                StardewModdingAPI.Events.GameEvents.UpdateTick += GameEvents_UpdateTick;
+                GameEvents.UpdateTick += GameEvents_UpdateTick;
             }
             else
             {
