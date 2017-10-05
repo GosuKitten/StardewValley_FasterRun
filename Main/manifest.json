@@ -9,5 +9,6 @@
   },
   "Description": "Makes your character run faster",
   "UniqueID": "KathrynHazuka.FasterRun",
-  "EntryDll": "FasterRun.dll"
+  "EntryDll": "FasterRun.dll",
+  "UpdateKeys": [ "Nexus:733" ]
 }
