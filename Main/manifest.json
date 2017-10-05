@@ -5,10 +5,9 @@
     "MajorVersion": 1,
     "MinorVersion": 1,
     "PatchVersion": 0,
-    "Build": ""
+    "Build": null
   },
   "Description": "Makes your character run faster",
-  "UniqueID": "",
-  "PerSaveConfigs": false,
+  "UniqueID": "KathrynHazuka.FasterRun",
   "EntryDll": "FasterRun.dll"
 }
