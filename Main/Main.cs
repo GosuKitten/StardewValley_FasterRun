@@ -12,10 +12,10 @@ namespace Main
         public override void Entry(IModHelper helper)
         {
             config = helper.ReadConfig<ModConfig>();
-            StardewModdingAPI.Events.PlayerEvents.LoadedGame += Event_LoadedGame;
+            StardewModdingAPI.Events.SaveEvents.AfterLoad += Event_AfterLoad;
         }
 
-        private void Event_LoadedGame(object sender, EventArgs e)
+        private void Event_AfterLoad(object sender, EventArgs e)
         {
             int totalSpeed = config.runSpeed;
 

@@ -24,3 +24,19 @@ S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\St
 S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Mono.Cecil.dll
 S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Mono.Cecil.Rocks.dll
 S:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.xml
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\FasterRun.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\FasterRun.pdb
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Stardew Valley.exe
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.exe
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\xTile.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Lidgren.Network.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Steamworks.NET.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\BmFont.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Newtonsoft.Json.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\Mono.Cecil.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.AssemblyRewriters.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.pdb
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\bin\Debug\StardewModdingAPI.xml
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\FasterRun.dll
+E:\Game Development\Mods\StardewValley\StardewValley_FasterRun\Main\obj\Debug\FasterRun.pdb
